@@ -9,7 +9,7 @@ class B(A):
         print(self.choco)
 
     def MB(self):
-        print("MB method Under B class")
+        print("MB method Under B class",self.choco)
 
 class C(A):
     def __init__(self):
@@ -17,15 +17,19 @@ class C(A):
         print(self.oats)
 
     def MC(self):
-        print("MC method Under C class")
+        print("MC method Under C class",self.oats)
 
 class D(C,B):
     def __init__(self):
-        super().MB()
-        super().MC()
+        C.__init__(self)
+        B.__init__(self)
+        # pass
+
+        # super().MB()
+        # super().MC()
 
     def MD(self):
-        print("MD method Under D class")
+        print("MD method Under D class",self.oats, self.choco)
 
 d1 = D()
-# d1.MA()
+d1.MD()
